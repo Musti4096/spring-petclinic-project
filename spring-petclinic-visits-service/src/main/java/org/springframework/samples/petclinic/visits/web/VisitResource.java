@@ -50,7 +50,7 @@ class VisitResource {
 
     @PostMapping("owners/*/pets/{petId}/visits")
     @ResponseStatus(HttpStatus.CREATED)
-   public Visit create(
+    Visit create(
         @Valid @RequestBody Visit visit,
         @PathVariable("petId") int petId) {
 
@@ -60,18 +60,18 @@ class VisitResource {
     }
 
     @GetMapping("owners/*/pets/{petId}/visits")
-   public List<Visit> visits(@PathVariable("petId") int petId) {
+    List<Visit> visits(@PathVariable("petId") int petId) {
         return visitRepository.findByPetId(petId);
     }
 
     @GetMapping("pets/visits")
-   public Visits visitsMultiGet(@RequestParam("petId") List<Integer> petIds) {
+    Visits visitsMultiGet(@RequestParam("petId") List<Integer> petIds) {
         final List<Visit> byPetIdIn = visitRepository.findByPetIdIn(petIds);
         return new Visits(byPetIdIn);
     }
 
     @Value
     static class Visits {
-        List<Visit> items;
+        private final List<Visit> items;
     }
 }

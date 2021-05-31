@@ -14,8 +14,9 @@ target/
 .idea
 *.iml
 
-# Visual Studio Code
-.factorypath
-
 # Branch switching
 generated/
+
+#VS Code
+.factorypath
+.project
